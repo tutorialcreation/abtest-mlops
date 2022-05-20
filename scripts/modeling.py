@@ -206,9 +206,14 @@ class Modeler:
         """
         X_train, X_test, y_train, y_test = self.split_data()
         
+        accuracy = []
         for key in parameters.keys():
             search = GridSearchCV(parameters[key]['model'],parameters[key]['paramas'],cv=5,return_train_score=False,verbose = 2)
             search.fit(X_train,y_train)
+            
+            accuracy.append({'model':key,'best_score': search.best_score_,'best_parameters':search.best_params_})
+         
+        return accuracy 
         
 
 if __name__=="__main__":
