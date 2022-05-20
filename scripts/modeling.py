@@ -200,7 +200,7 @@ class Modeler:
         accuracy = accuracy_score(y_test, predicted_data)
         return confusion_mat,accuracy
     
-    def hyperparameters(self,model,parameters):
+    def hyperparameters(self,parameters):
         """
         -hyperparameters
         """
