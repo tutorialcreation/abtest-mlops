@@ -25,6 +25,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import BernoulliNB, GaussianNB
+from sklearn.model_selection import GridSearchCV
 
 # To evaluate end result we have
 from sklearn.metrics import accuracy_score, confusion_matrix
@@ -198,6 +199,17 @@ class Modeler:
         # get accuracy score
         accuracy = accuracy_score(y_test, predicted_data)
         return confusion_mat,accuracy
+    
+    def hyperparameters(self,model,parameters):
+        """
+        -hyperparameters
+        """
+        X_train, X_test, y_train, y_test = self.split_data()
+        
+        for key in parameters.keys():
+            search = GridSearchCV(parameters[key]['model'],parameters[key]['paramas'],cv=5,return_train_score=False,verbose = 2)
+            search.fit(X_train,y_train)
+        
 
 if __name__=="__main__":
     df = pd.read_csv("data/data.csv")
