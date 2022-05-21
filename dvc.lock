@@ -4,8 +4,8 @@ stages:
     cmd: python scripts/eda.py data/AdSmartABdata.csv
     deps:
     - path: data/data.csv
-      md5: 76a97c100cf1ef6425513d5b31a18d09
-      size: 2770
+      md5: 79c2fffad98e2581f366f93c9215b08b
+      size: 63333
     - path: scripts/eda.py
       md5: 1063e14ffa56dfab3e718667bd095167
       size: 2418
@@ -49,12 +49,12 @@ stages:
       md5: 7d13e316c4e48cbbc990fe8a6a2db2a7
       size: 41609
     - path: pipeline/evaluate.py
-      md5: b13089e477bfcb7367c2066117d1fa48
-      size: 1261
+      md5: e87ae9a21dd79009aea4800b9b1bfc34
+      size: 1229
     params:
       params.yaml:
         validation.folds: 5
     outs:
     - path: data/results.csv
-      md5: d65ad430aebe0e33174298b8bb164171
-      size: 60
+      md5: 80cebfbbd74ebf2042a044fe53fa85ec
+      size: 76
