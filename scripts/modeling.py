@@ -260,12 +260,13 @@ class Modeler:
         cv = KFold(n_splits=fold, random_state=1, shuffle=True)
         return cv
 
-    def evaluate(self,fold=5,model_=LogisticRegression,column="yes",**kwargs):
+    def evaluate(self,cv=None,fold=5,model_=LogisticRegression,column="yes",**kwargs):
         """
         - evaluates the algorithm
         """
         # get the dataset
-        cv = self.get_folds(fold)
+        if not cv:
+            cv = self.get_folds(fold)
         X, y = self.get_columns(column)
         # get the model
         model = model_(**kwargs)
@@ -280,6 +281,32 @@ class Modeler:
         """
         return self.df
     
+
+    def ml_plot(self):
+        """
+        - this algorithm tells you the performance of the plots
+        """
+        ideal, _, _ = self.evaluate(cv=LeaveOneOut())
+        folds = range(2,31)
+        # record mean and min/max of each set of results
+        means, mins, maxs = list(),list(),list()
+        # evaluate each k value
+        for k in folds:
+            # define the test condition
+            # evaluate k value
+            k_mean, k_min, k_max = self.evaluate(fold=k)
+            # report performance
+            # store mean accuracy
+            means.append(k_mean)
+            # store min and max relative to the mean
+            mins.append(k_mean - k_min)
+            maxs.append(k_max - k_mean)
+        # line plot of k mean values with min/max error bars
+        plt.errorbar(folds, means, yerr=[mins, maxs], fmt='o')
+        # plot the ideal case in a separate color
+        plt.plot(folds, [ideal for _ in range(len(folds))], color='r')
+        # show the plot
+        plt.show()
 
 
 if __name__=="__main__":

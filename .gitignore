@@ -14,6 +14,7 @@ data/*
 !/data/**/
 !**/*.dvc
 !data/data.csv
+!data/AdSmartABdata.csv
 env/
 .env
 

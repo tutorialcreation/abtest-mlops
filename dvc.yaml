@@ -1,7 +1,7 @@
 stages:
   # first stage in the pipeline
   prepare:
-    cmd: python scripts/eda.py data/data.csv
+    cmd: python scripts/eda.py data/AdSmartABdata.csv
     deps:
     - data/data.csv
     - scripts/eda.py
@@ -13,13 +13,13 @@ stages:
     - data/eda.csv
     - pipeline/train.py
     outs:
-    - data/os_6.csv
+    - data/os_5.csv
   crossValidation:
-    cmd: cd pipeline && python cross_validator.py 5 ../data/os_6.csv
+    cmd: cd pipeline && python cross_validator.py 5 ../data/os_5.csv
     params:
     - validation.folds
     deps:
-    - data/os_6.csv
+    - data/os_5.csv
     - pipeline/cross_validator.py
     outs:
     - data/validation.csv
