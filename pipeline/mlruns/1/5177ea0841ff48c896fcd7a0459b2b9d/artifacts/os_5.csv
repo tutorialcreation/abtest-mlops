@@ -1,0 +1,4 @@
+,auction_id,experiment,date,hour,device_make,platform_os,browser,yes,no
+10,004c8a83-1c0f-4a4a-ba9e-bc89e8c0c0c1,control,2020-07-10,13,iPhone,5,Mobile Safari,0,0
+25,00d22463-2d1f-44de-8d67-11d6c6b96a00,exposed,2020-07-03,1,iPhone,5,Chrome Mobile iOS,0,0
+26,00e4f247-b54b-4f95-a000-ec4645d5a692,control,2020-07-03,15,iPhone,5,Mobile Safari,0,0
